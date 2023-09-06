@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <!-- HTML mit JS verbunden. -->
+        <script type="greeter.js"></script>
+        <!-- Die "meta"-Angaben sind quasi das BIOS für eine Webseite - hier sind die Basics vermerkt, mit der der Browser arbeiten soll wenn er die Seite betritt -->
+        <meta charset="UTF-8"> 
+        <!-- HTML mit Zukunftige CSS verbunden -->
+        <link rel="stylesheet" href="style.css">
+
+        <title>Greeter JS Projekt</title>
+        <style>
+        </style>
+        
+    </head>
+
+    <body>
+        <!-- Uberschrift für Vorname Feld -->
+        <h1>Wie heißen Sie?</h1>
+        <label for="vorname">Vorname:</label>
+        <!-- Vorname Feld, hier schreibt Nutzer der Vorname; Type fon eingegebene Information sollte text sein; Information hat ein id mit "vormame" das ist die Kennung für die Feld;
+        "name ="vormame"" - dies ist der Name von Vorname Feld, der beim Senden die Information an der Server gesendet wird; required - dieses Atribut gibt an,
+        dass das Feld vor dem Absenden die Information ausgefüllt sein muss; minlength und maxlength ist maximale und minimale Länge des eingegebene Text; size ist die Große des Eingabefeldes in Zeichen -->
+        <input type="text" id="vorname" name="vorname" required minlength="3" maxlength="13" size="15" />
+        
+        <!-- Das gleiche für Nachname, Geschlecht und Alter -->
+        <label for="nachname">Nachname:</label>
+        <input type="text" id="nachname" name="nachname" required minlength="3" maxlength="13" size="15" />
+
+        <h1>Was ist ihre Geschlecht?</h1>
+        <label for="geschlecht">Geschlecht:</label>
+        <input type="text" id="geschlecht" name="geschlecht" required min ="1" max ="3" size="8" />
+
+        <h1>Wie Alt sind Sie?</h1>
+        <label for="alter">Alter:</label>
+        <input type="number" id="alter" name="alter" required min ="1" max ="3" size="4" />
+
+
+    </body>

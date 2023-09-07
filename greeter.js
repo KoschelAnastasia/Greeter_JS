@@ -48,5 +48,6 @@
 // Feld mit ja oder nein Bottoms
 // Falls Ja Spiel startet neu 
 // Falls nutzer nicht Erstes mal Spielen will, wird geschrieben "Ok :("
+// 44
 // 55
 // Falls Nutzer ein Spiel oder mehrere schpiele geschpielt

@@ -6,29 +6,29 @@ window.onload= function() {
 // Global Variablen
 let männlicheGeschlecht;
 let weiblicheGeschlecht;
-let inputButton = document.getElementById('inputButton');
-let vorname = document.getElementById('vornameId');
-let nachname = document.getElementById('nachnameId');
-let geschlecht = document.getElementById('geschlechtId');
-let alter = document.getElementById('alterId');
+// let inputButton = document.getElementById('inputButton');
+let vorname = document.getElementById('vorname');
+let nachname = document.getElementById('nachname');
+let geschlecht = document.getElementById('geschlecht');
+let alter = document.getElementById('alter');
 
-// verbunden mit Css und HTML
-// inputButton.addEventListener("click", function (){
+
 function main(){
     
 
-    inputValVorname.addEventListener("click", function(){
-        let inputValVorname = vorname.value;
-        let inputValNachname = nachname.value;
-        let inputValGeschlecht = geschlecht.value;
-        let inputValAlter = alter.value;
+    inputButton.addEventListener("click", function(){
+        let vornameOutput = vorname.value;
+        let nachnameOutput = nachname.value;
+        let geschlechtOutput = geschlecht.value;
+        let alterOutput = alter.value;
         
         
-        alert(inputValAlter);
-        alert(inputValVorname);
-        alert(inputValNachname);
-        alert(inputValGeschlecht);
+        alert(vornameOutput);
+        alert(nachnameOutput);
+        alert(geschlechtOutput);
+        alert(alterOutput);
 });
+
 }
     // ziet den eingegebene Alter, pruft ob in Feld mit Alter die zahl eingegeben wurde, falls nicht wird Fehler gemeldet
     // "Schreiben Sie wie Alt sind Sie mit Zahlen"

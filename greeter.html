@@ -32,8 +32,12 @@
         <br>
         <br>   
         <h1>Was ist ihre Geschlecht?</h1>
-        <label for="geschlecht">Geschlecht:</label>
-        <input type="text" id="geschlecht" name="geschlecht" minlength="3" maxlength="13" size="15" />
+        <input type="radio" id="geschlecht" name="geschlecht" value="Frau" checked="checked"/>
+        <label for="weiblich">weiblich</label>
+        <br>
+        <br>
+        <input type="radio" id="geschlecht" name="geschlecht" value="Herr" />
+        <label for="männlich">männlich</label>
         <br>
         <br>
         <h1>Wie Alt sind Sie?</h1>
@@ -44,6 +48,11 @@
         <h2>Ist alles richtig? Dann senden Sie Formular.</h2>
         <button name="input" id="inputButton" >Formular senden</button>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="infoText"><span id="begrusung"></span></div>
 
         <script src="greeter.js"></script>        
 

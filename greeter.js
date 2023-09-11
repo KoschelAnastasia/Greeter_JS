@@ -11,6 +11,7 @@ let vorname = document.getElementById('vorname');
 let nachname = document.getElementById('nachname');
 let geschlecht = document.getElementById('geschlecht');
 let alter = document.getElementById('alter');
+let begrusung = document.getElementById('begrusung');
 
 
 function main(){
@@ -21,13 +22,18 @@ function main(){
         let nachnameOutput = nachname.value;
         let geschlechtOutput = geschlecht.value;
         let alterOutput = alter.value;
+
+
+        if (alterOutput >= 40 ){
+        document.getElementById('begrusung').innerHTML = `Guten Tag, ${geschlechtOutput} ${nachnameOutput}`
+        }
         
-        
-        alert(vornameOutput);
-        alert(nachnameOutput);
-        alert(geschlechtOutput);
-        alert(alterOutput);
+        else
+        {
+        document.getElementById('begrusung').innerHTML = `Guten Tag, ${vornameOutput}`
+        }
 });
+
 
 }
     // ziet den eingegebene Alter, pruft ob in Feld mit Alter die zahl eingegeben wurde, falls nicht wird Fehler gemeldet

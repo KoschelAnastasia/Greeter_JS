@@ -1,0 +1,28 @@
+h1{
+    text-align:left;
+}
+
+h2{
+    text-align: left;
+}
+
+#vornameId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nachnameId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#geschlechtId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#alterId{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,7 +1,7 @@
 //Funktion Liste
 window.onload= function() {
     main();
-    
+    spiel ();
 }
 // Global Variablen
 let männlicheGeschlecht;
@@ -26,14 +26,26 @@ function main(){
 
         if (alterOutput >= 40 ){
         document.getElementById('begrusung').innerHTML = `Guten Tag, ${geschlechtOutput} ${nachnameOutput}`
+        document.getElementById('begrusung2').innerHTML = `Wollen Sie ein Spiel spielen?`
         }
         
         else
         {
         document.getElementById('begrusung').innerHTML = `Guten Tag, ${vornameOutput}`
+        document.getElementById('begrusung2').innerHTML = `Wilst du ein Spiel spielen?`
         }
+        
 });
+}
+function spiel () {
+    var randomZahl = Math.random();
+    let inputSpielZahl;
+    let spielZahl;
+    let zahl;
+    let i = 0;
 
+    spielZahl = randomZahl.nextInt(100);
+    console.log(spielZahl);
 
 }
     // ziet den eingegebene Alter, pruft ob in Feld mit Alter die zahl eingegeben wurde, falls nicht wird Fehler gemeldet

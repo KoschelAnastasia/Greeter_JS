@@ -1,15 +1,15 @@
 //Funktion Liste
 window.onload= function() {
     main();
-    spiel ();
 }
 // Global Variablen
 let männlicheGeschlecht;
 let weiblicheGeschlecht;
+let inputSpielZahl;
+
 // let inputButton = document.getElementById('inputButton');
 let vorname = document.getElementById('vorname');
 let nachname = document.getElementById('nachname');
-let geschlecht = document.getElementById('geschlecht');
 let alter = document.getElementById('alter');
 let begrusung = document.getElementById('begrusung');
 let begrusung2 = document.getElementById('begrusung2'); 
@@ -18,8 +18,9 @@ let infoText = document.getElementById('infoText');
 
 function main(){
     
-
+    
     inputButton.addEventListener("click", function(){
+        let geschlecht = document.querySelector('input[name="geschlecht"]:checked');
         let vornameOutput = vorname.value;
         let nachnameOutput = nachname.value;
         let geschlechtOutput = geschlecht.value;
@@ -33,45 +34,99 @@ function main(){
         
         else
         {
-        document.getElementById('begrusung').innerHTML = `Guten Tag, ${vornameOutput}`
+        document.getElementById('begrusung').innerHTML = `Hi, ${vornameOutput}`
         document.getElementById('begrusung2').innerHTML = `Wilst du ein Spiel spielen?`
         }
         
-        document.getElementById('radioJaNein').innerHTML = '<input type="radio" id="radioJa" name="radioJa" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioNein" value="Nein" /> <label for="nein">Nein</label>';
+        document.getElementById('radioJaNein').innerHTML = '<input type="radio" id="radioJa" name="radioJaNein" value="ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioJaNein" value="nein" /> <label for="nein">Nein</label>';
         document.getElementById('JaNeinInput').innerHTML = '<button name="buttonJaNein" id="buttonJaNein" >Bestetigen</button>';
-
+    
         JaNeinInput.addEventListener('click', function (){
-        if(radioJaNein.value == 'ja'){
+        let radioJaNein = document.querySelector('input[name="radioJaNein"]:checked');
+        let radioJaNeinOutput = radioJaNein.value;
+        if(radioJaNeinOutput == 'ja'){
+            
+            if (alterOutput >= 40 ){
+                document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
+                Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen, ob mein Zahl größer oder kleiner.
+                Möge der Macht mit ihnen sein.
+                Es geht los. Ich hab ein Zahl. Raten Sie welche:`
+                
+            }
+            
+            else
+            {
+                document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
+                Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen ob mein Zahl größer oder kleiner.
+                Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
+                Es geht los. Ich hab ein Zahl. Rate welche:`
+            }
             spiel();
         } 
-        else{
-            
+        else {
+            document.getElementById('antwort').innerHTML = 'Ok :('       
         }
-        });
-        
-        // var radioJaNein = document.createElement('radio');
-        // var radioJaNein2 =document.createElement('radio');
-
-        // foreach(ListItem RadioButton in inputButton){
-        //     RadioButton.Attributes.Add("onclick", "alert('hello');");
-        // }
-        // document.getElementById("radioButton").click();
-        // document.getElementById(`jaOderNein`).addEventListener("click", jaNeinFunktion);
-        // function jaNeinFunktion (){
-        //     document.getElementById.innerHTML = "";
-        // }
-        
+    });
+    
+    
 });
 }
 function spiel () {
     var randomZahl = Math.floor(Math.random() * 100);
-    let inputSpielZahl;
     let spielZahl;
     let zahl;
     let i = 0;
-
+    
     spielZahl = randomZahl;
     console.log(spielZahl);
+    
+    document.getElementById('spielerZahl').innerHTML = '<label for="spielerZahl">Zahl:</label><input type="number" id="spielerZahlInput" name="spielerZahl" min ="1" max ="100" size="4" />';0,
+    
+
+    while (i < 5) {
+            String? spielZahl = stdin.readLineSync();
+            inputSpielZahl = int.parse(spielZahlInput!);
+            zahl = inputSpielZahl;
+        
+            if (spielZahl == zahl) {
+              print("Glükwunsch! Mein zahl ist $spielZahl");
+              break;
+            }
+            if (zahl < spielZahl) {
+              print("Mein Zahl ist großer");
+            } else {
+              print("Mein Zahl ist kleiner");
+            }
+            i++;
+            if (i == 4) {
+              print("Pass auf! Es ist letztes Versuch");
+            }
+          }
+          if (i == 5) {
+            print("Keine Versuchen mehr. Mein Zahl war $spielZahl");
+          }
+        
+          var inputNochEinSpiel;
+        
+          print("Noch ein Spiel? Ja/Nein:");
+          inputNochEinSpiel = stdin.readLineSync();
+        
+          if (inputNochEinSpiel.toLowerCase() == "ja") {
+            if (inputAlter >= 40) {
+              print("Es geht los. Ich hab eine Zahl. Raten Sie welche.");
+            } else {
+              print("Es geht los. Ich hab eine Zahl. Rate welche.");
+            }
+            spiel(inputGeschlecht, inputName, inputNachname, inputAlter);
+          }
+          if (inputNochEinSpiel.toLowerCase() == "nein") {
+            if (inputAlter >= 40) {
+              print("Ich hoffe, Sie hatten Spaß. Auf Wiedersehen!");
+            } else {
+              print("Ich hoffe, du hattst Spaß. Auf Wiedersehen!");
+            }
+          }
+    
 
 }
     // ziet den eingegebene Alter, pruft ob in Feld mit Alter die zahl eingegeben wurde, falls nicht wird Fehler gemeldet

@@ -12,6 +12,8 @@ let nachname = document.getElementById('nachname');
 let geschlecht = document.getElementById('geschlecht');
 let alter = document.getElementById('alter');
 let begrusung = document.getElementById('begrusung');
+let begrusung2 = document.getElementById('begrusung2'); 
+let infoText = document.getElementById('infoText');
 
 
 function main(){
@@ -35,16 +37,40 @@ function main(){
         document.getElementById('begrusung2').innerHTML = `Wilst du ein Spiel spielen?`
         }
         
+        document.getElementById('radioJaNein').innerHTML = '<input type="radio" id="radioJa" name="radioJa" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioNein" value="Nein" /> <label for="nein">Nein</label>';
+        document.getElementById('JaNeinInput').innerHTML = '<button name="buttonJaNein" id="buttonJaNein" >Bestetigen</button>';
+
+        JaNeinInput.addEventListener('click', function (){
+        if(radioJaNein.value == 'ja'){
+            spiel();
+        } 
+        else{
+            
+        }
+        });
+        
+        // var radioJaNein = document.createElement('radio');
+        // var radioJaNein2 =document.createElement('radio');
+
+        // foreach(ListItem RadioButton in inputButton){
+        //     RadioButton.Attributes.Add("onclick", "alert('hello');");
+        // }
+        // document.getElementById("radioButton").click();
+        // document.getElementById(`jaOderNein`).addEventListener("click", jaNeinFunktion);
+        // function jaNeinFunktion (){
+        //     document.getElementById.innerHTML = "";
+        // }
+        
 });
 }
 function spiel () {
-    var randomZahl = Math.random();
+    var randomZahl = Math.floor(Math.random() * 100);
     let inputSpielZahl;
     let spielZahl;
     let zahl;
     let i = 0;
 
-    spielZahl = randomZahl.nextInt(100);
+    spielZahl = randomZahl;
     console.log(spielZahl);
 
 }

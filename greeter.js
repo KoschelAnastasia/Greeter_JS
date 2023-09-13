@@ -6,6 +6,8 @@ window.onload= function() {
 let männlicheGeschlecht;
 let weiblicheGeschlecht;
 let inputSpielZahl;
+let spielZahl;
+let zahl;
 
 // let inputButton = document.getElementById('inputButton');
 let vorname = document.getElementById('vorname');
@@ -17,118 +19,219 @@ let infoText = document.getElementById('infoText');
 
 
 function main(){
+  
+  
+  inputButton.addEventListener("click", function(){
+    let geschlecht = document.querySelector('input[name="geschlecht"]:checked');
+    let vornameOutput = vorname.value;
+    let nachnameOutput = nachname.value;
+    let geschlechtOutput = geschlecht.value;
+    let alterOutput = alter.value;
     
     
-    inputButton.addEventListener("click", function(){
-        let geschlecht = document.querySelector('input[name="geschlecht"]:checked');
-        let vornameOutput = vorname.value;
-        let nachnameOutput = nachname.value;
-        let geschlechtOutput = geschlecht.value;
-        let alterOutput = alter.value;
-
-
+    if (alterOutput >= 40 ){
+      document.getElementById('begrusung').innerHTML = `Guten Tag, ${geschlechtOutput} ${nachnameOutput}`
+      document.getElementById('begrusung2').innerHTML = `Wollen Sie ein Spiel spielen?`
+    }
+    
+    else
+    {
+      document.getElementById('begrusung').innerHTML = `Hi, ${vornameOutput}`
+      document.getElementById('begrusung2').innerHTML = `Wilst du ein Spiel spielen?`
+    }
+    
+    document.getElementById('radioJaNein').innerHTML = '<input type="radio" id="radioJa" name="radioJaNein" value="ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioJaNein" value="nein" /> <label for="nein">Nein</label>';
+    document.getElementById('JaNeinInput').innerHTML = '<button name="buttonJaNein" id="buttonJaNein" >Bestetigen</button>';
+    
+    JaNeinInput.addEventListener('click', function (){
+      let radioJaNein = document.querySelector('input[name="radioJaNein"]:checked');
+      let radioJaNeinOutput = radioJaNein.value;
+      if(radioJaNeinOutput == 'ja'){
+        
         if (alterOutput >= 40 ){
-        document.getElementById('begrusung').innerHTML = `Guten Tag, ${geschlechtOutput} ${nachnameOutput}`
-        document.getElementById('begrusung2').innerHTML = `Wollen Sie ein Spiel spielen?`
+          document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
+          Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen, ob mein Zahl größer oder kleiner.
+          Möge der Macht mit ihnen sein.
+          Es geht los. Ich hab ein Zahl. Raten Sie welche:`
+          
         }
         
         else
         {
-        document.getElementById('begrusung').innerHTML = `Hi, ${vornameOutput}`
-        document.getElementById('begrusung2').innerHTML = `Wilst du ein Spiel spielen?`
+          document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
+          Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen ob mein Zahl größer oder kleiner.
+          Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
+          Es geht los. Ich hab ein Zahl. Rate welche:`
         }
-        
-        document.getElementById('radioJaNein').innerHTML = '<input type="radio" id="radioJa" name="radioJaNein" value="ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioJaNein" value="nein" /> <label for="nein">Nein</label>';
-        document.getElementById('JaNeinInput').innerHTML = '<button name="buttonJaNein" id="buttonJaNein" >Bestetigen</button>';
-    
-        JaNeinInput.addEventListener('click', function (){
-        let radioJaNein = document.querySelector('input[name="radioJaNein"]:checked');
-        let radioJaNeinOutput = radioJaNein.value;
-        if(radioJaNeinOutput == 'ja'){
-            
-            if (alterOutput >= 40 ){
-                document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
-                Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen, ob mein Zahl größer oder kleiner.
-                Möge der Macht mit ihnen sein.
-                Es geht los. Ich hab ein Zahl. Raten Sie welche:`
-                
-            }
-            
-            else
-            {
-                document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
-                Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen ob mein Zahl größer oder kleiner.
-                Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
-                Es geht los. Ich hab ein Zahl. Rate welche:`
-            }
-            spiel();
-        } 
-        else {
-            document.getElementById('antwort').innerHTML = 'Ok :('       
-        }
+        spiel();
+      } 
+      else {
+        document.getElementById('antwort').innerHTML = 'Ok :('       
+      }
     });
     
     
-});
+  });
 }
-function spiel () {
-    var randomZahl = Math.floor(Math.random() * 100);
-    let spielZahl;
-    let zahl;
-    let i = 0;
+// spiel funktion
+function spiel() {
+
+  // zufalige Zahl wird generirt
+  var randomZahl = Math.floor(Math.random() * 100);
+  spielZahl = randomZahl;
+  // 
+  let versuche = 5;
+  // let gewonnen = false;
+  
+  
+  
+  document.getElementById('spielerZahl').innerHTML = '<label for="spielerZahl">Zahl:</label><input type="number" id="spielerZahlInput" name="spielerZahl" min ="1" max ="100" size="4" />';
+  document.getElementById('spielerZahlInputButton').innerHTML = '<button name="spielerZahlButton" id="spielerZahlButton" >Bestätigen</button>';
+  
+  
+  
+  function handleButtonClick() {
     
-    spielZahl = randomZahl;
+    let zahl = spielerZahlInput.value;
+    
     console.log(spielZahl);
-    
-    document.getElementById('spielerZahl').innerHTML = '<label for="spielerZahl">Zahl:</label><input type="number" id="spielerZahlInput" name="spielerZahl" min ="1" max ="100" size="4" />';0,
-    
+    console.log(zahl);
 
-    while (i < 5) {
-            String? spielZahl = stdin.readLineSync();
-            inputSpielZahl = int.parse(spielZahlInput!);
-            zahl = inputSpielZahl;
-        
-            if (spielZahl == zahl) {
-              print("Glükwunsch! Mein zahl ist $spielZahl");
-              break;
-            }
-            if (zahl < spielZahl) {
-              print("Mein Zahl ist großer");
-            } else {
-              print("Mein Zahl ist kleiner");
-            }
-            i++;
-            if (i == 4) {
-              print("Pass auf! Es ist letztes Versuch");
-            }
-          }
-          if (i == 5) {
-            print("Keine Versuchen mehr. Mein Zahl war $spielZahl");
-          }
-        
-          var inputNochEinSpiel;
-        
-          print("Noch ein Spiel? Ja/Nein:");
-          inputNochEinSpiel = stdin.readLineSync();
-        
-          if (inputNochEinSpiel.toLowerCase() == "ja") {
-            if (inputAlter >= 40) {
-              print("Es geht los. Ich hab eine Zahl. Raten Sie welche.");
-            } else {
-              print("Es geht los. Ich hab eine Zahl. Rate welche.");
-            }
-            spiel(inputGeschlecht, inputName, inputNachname, inputAlter);
-          }
-          if (inputNochEinSpiel.toLowerCase() == "nein") {
-            if (inputAlter >= 40) {
-              print("Ich hoffe, Sie hatten Spaß. Auf Wiedersehen!");
-            } else {
-              print("Ich hoffe, du hattst Spaß. Auf Wiedersehen!");
-            }
-          }
-    
 
+    if (zahl == spielZahl) {
+
+      document.getElementById('ergebnis').innerHTML = `Glückwunsch! Mein Zahl ist ${spielZahl}`;
+      document.getElementById('nochEinSpiel').innerHTML = `Noch ein Spiel?`;
+      document.getElementById('radioNochEinMal').innerHTML = '<input type="radio" id="radioJaNoch" name="radioNochEinMal" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioNochEinMal" value="Nein" /> <label for="nein">Nein</label>';
+      document.getElementById('nochEinMalButton').innerHTML = '<button name="nochEinMalButton" id="nochEinMalButton" >Bestätigen</button>';
+
+    } 
+    
+    else if (zahl < spielZahl) {
+      document.getElementById('outputSpiel').innerHTML = `Mein Zahl ist größer als ${zahl}`;
+    } 
+    else {
+      document.getElementById('outputSpiel').innerHTML = `Mein Zahl ist kleiner als ${zahl}`;
+    }
+
+    if (versuche == 1) {
+      document.getElementById('warnung').innerHTML = `Pass auf! Es ist der letzte Versuch`;
+    }
+    if (versuche == 0 && zahl != spielZahl) {
+      document.getElementById('ergebnis').innerHTML = `Keine Versuche mehr. Mein Zahl war ${spielZahl}`;
+      document.getElementById('nochEinSpiel').innerHTML = `Noch ein Spiel?`;
+      document.getElementById('radioNochEinMal').innerHTML = '<input type="radio" id="radioJaNoch" name="radioNochEinMal" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNeinNoch" name="radioNochEinMal" value="Nein" /> <label for="nein">Nein</label>';
+      document.getElementById('nochEinMalButton').innerHTML = '<button name="nochEinMalButton" id="nochEinMalButton" >Bestätigen</button>';
+    }
+    versuche--;
+  }
+  document.getElementById('spielerZahlInputButton').addEventListener("click", handleButtonClick);
 }
+
+ 
+
+
+ 
+
+document.getElementById('nochEinMalButton').addEventListener("click", function () {
+
+  if (document.getElementById('radioJaNoch').checked) {
+    document.getElementById('outputSpiel').innerHTML = ``;
+    document.getElementById('warnung').innerHTML = ``;
+    document.getElementById('ergebnis').innerHTML = ``;
+    document.getElementById('nochEinSpiel').innerHTML = ``;
+    document.getElementById('radioNochEinMal').innerHTML = '';
+    document.getElementById('nochEinMalButton').innerHTML = '';
+    spiel();
+
+  } else {
+
+    document.getElementById('wiedersehen').innerHTML = `Auf Wiedersehen!`;
+
+  }
+
+});
+// function spiel () {
+  
+  
+//   var randomZahl = Math.floor(Math.random() * 100);
+  
+//   spielZahl = randomZahl;
+  
+//   // let inputNochEinSpiel;
+  
+//   let versuche = 6;
+//   let gewonnen = false;
+//   document.getElementById('spielerZahl').innerHTML = '<label for="spielerZahl">Zahl:</label><input type="number" id="spielerZahlInput" name="spielerZahl" min ="1" max ="100" size="4" />';
+//   document.getElementById('spielerZahlInputButton').innerHTML = '<button name="spielerZahlButton" id="spielerZahlButton" >Bestetigen</button>'; 
+  
+//   for (i=0; i<versuche; i++) {
+//     spielerZahlInputButton.addEventListener("click", function(){
+//       zahl = spielerZahlInput.value;
+//       console.log(zahl);
+//       console.log(spielZahl);
+//     if (zahl == spielZahl){
+//       document.getElementById('ergebnis').innerHTML = `Glükwunsch! Mein zahl ist ${spielZahl}`;
+//       document.getElementById('nochEinSpiel').innerHTML = `Noch ein Spiel?`
+//       document.getElementById('radioNochEinMal').innerHTML = '<input type="radio" id="radioJa" name="radioNochEinMal" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioNochEinMal" value="Nein" /> <label for="nein">Nein</label>';
+//       document.getElementById('nochEinMalButton').innerHTML = '<button name="nochEinMalButton" id="nochEinMalButton" >Bestetigen</button>';
+//       // gewonnen = true;
+//       // break;
+//     }
+//     if (zahl < spielZahl){
+//       document.getElementById('outputSpiel').innerHTML = `Mein Zahl ist großer als ${zahl}`;
+//     }
+//     else {
+//       document.getElementById('outputSpiel').innerHTML = `Mein Zahl ist kleiner als ${zahl}`
+//     }
+//     if (i == 5){
+//       document.getElementById('warnung').innerHTML = `Pass auf! Es ist letztes Versuch`
+//     }
+//     if (i == 6 ){
+//       document.getElementById('ergebnis').innerHTML = `Keine Versuchen mehr. Mein Zahl war ${spielZahl}`
+//       document.getElementById('nochEinSpiel').innerHTML = `Noch ein Spiel?`
+//       document.getElementById('radioNochEinMal').innerHTML = '<input type="radio" id="radioJa" name="radioNochEinMal" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioNochEinMal" value="Nein" /> <label for="nein">Nein</label>';
+//       document.getElementById('nochEinMalButton').innerHTML = '<button name="nochEinMalButton" id="nochEinMalButton" >Bestetigen</button>';
+//       // break;
+//     }
+//   });
+// } 
+
+//   nochEinMalButton.addEventListener("click", function(){
+//     if(radioNochEinMal == 'ja'){
+//       spiel ();
+//       }
+//       else{
+//         document.getElementById('wiedersehen').innerHTML = `Auf Wiedersehen!`
+//       }
+//   });
+// }
+
+
+   
+        
+        
+        
+          // print("Noch ein Spiel? Ja/Nein:");
+          // inputNochEinSpiel = stdin.readLineSync();
+        
+          // if (inputNochEinSpiel.toLowerCase() == "ja") {
+          //   if (inputAlter >= 40) {
+          //     print("Es geht los. Ich hab eine Zahl. Raten Sie welche.");
+          //   } else {
+          //     print("Es geht los. Ich hab eine Zahl. Rate welche.");
+          //   }
+          //   spiel(inputGeschlecht, inputName, inputNachname, inputAlter);
+          // }
+          // if (inputNochEinSpiel.toLowerCase() == "nein") {
+          //   if (inputAlter >= 40) {
+          //     print("Ich hoffe, Sie hatten Spaß. Auf Wiedersehen!");
+          //   } else {
+          //     print("Ich hoffe, du hattst Spaß. Auf Wiedersehen!");
+          //   }
+          // }
+    
+
     // ziet den eingegebene Alter, pruft ob in Feld mit Alter die zahl eingegeben wurde, falls nicht wird Fehler gemeldet
     // "Schreiben Sie wie Alt sind Sie mit Zahlen"
     // Nutzer wird verpflichtet Alter neu zu schreiben

@@ -49,19 +49,19 @@ function main(){
       if(radioJaNeinOutput == 'ja'){
         
         if (alterOutput >= 40 ){
-          document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
+          document.getElementById('ersteAntwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
           Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen, ob mein Zahl größer oder kleiner.
-          Möge der Macht mit ihnen sein.
-          Es geht los. Ich hab ein Zahl. Raten Sie welche:`
+            Möge der Macht mit ihnen sein.`
+          document.getElementById('zweiteAntwort').innerHTML =`Es geht los. Ich hab ein Zahl. Raten Sie welche:`
           
         }
         
         else
         {
-          document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
+          document.getElementById('ersteAntwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
           Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen ob mein Zahl größer oder kleiner.
-          Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
-          Es geht los. Ich hab ein Zahl. Rate welche:`
+          Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)`
+          document.getElementById('zweiteAntwort').innerHTML =`Es geht los. Ich hab ein Zahl. Rate welche:`
         }
         spiel();
       } 
@@ -136,10 +136,11 @@ function spiel() {
 document.getElementById('nochEinMalButton').addEventListener("click", function () {
 
   if (document.getElementById('radioJaNoch').checked) {
+    document.getElementById('infoText').innerHTML = ``;
     document.getElementById('outputSpiel').innerHTML = ``;
     document.getElementById('warnung').innerHTML = ``;
     document.getElementById('ergebnis').innerHTML = ``;
-    document.getElementById('nochEinSpiel').innerHTML = ``;
+    document.getElementById('nochEinSpiel').innerHTML = '';
     document.getElementById('radioNochEinMal').innerHTML = '';
     document.getElementById('nochEinMalButton').innerHTML = '';
     spiel();

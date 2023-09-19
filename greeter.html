@@ -26,11 +26,14 @@
         <input type="text" id="vorname" name="vorname"  minlength="3" maxlength="13" size="15" />
         <br>
         <br>
-        <!-- Das gleiche für Nachname, Geschlecht und Alter -->
+        <!-- Das gleiche für Nachname -->
         <label for="nachname">Nachname:</label>
         <input type="text" id="nachname" name="nachname" minlength="3" maxlength="13" size="15" />
         <br>
         <br>   
+        <!-- Button Radio Type. Benutzer kann von zwei Möglichkeiten wahlen männlich oder weiblich. Jeder Möglichkeiten hat
+        eigene Value, das wird später Begrüssung von Menchen über 40 zu Begrusung, anstatt logik dafür in JS zu schreiben
+        benutze ich einfach Value von Objekts -->
         <h1>Was ist ihre Geschlecht?</h1>
         <input type="radio" id="geschlechtWeib" name="geschlecht" value="Frau" checked="checked"/>
         <label for="weiblich">weiblich</label>
@@ -40,11 +43,17 @@
         <label for="männlich">männlich</label>
         <br>
         <br>
+        <!-- Vorname Feld, hier schreibt Nutzer der Alter; Type fon eingegebene Information sollte number sein; Information hat ein id mit "alter", das ist die Kennung für die Feld;
+        "name ="alter"" - dies ist der Name von Alter Feld, der beim Senden die Information an der Server gesendet wird; min und max ist maximale und minimale Zahl
+         des eingegebene Alter; size ist die Große des Eingabefeldes in Zeichen -->
         <h1>Wie Alt sind Sie?</h1>
         <label for="alter">Alter:</label>
         <input type="number" id="alter" name="alter" min ="1" max ="200" size="4" />
         <br>
         <br>
+        <!-- Ein Button, die Formular sendet. button name="input" ist ein HTML-Button mit dem Namen "input", der in Formularen verwendet wird,
+         um Daten an den Server zu senden. Das "id= "inputButton""-Attribut wird verwendet, um diesem Button eine eindeutige Kennung zuzuweisen. Dies ermöglicht es,
+         den Button leicht mit JavaScript oder CSS anzusprechen und zu bearbeiten.-->
         <h2>Ist alles richtig? Dann senden Sie Formular.</h2>
         <button name="input" id="inputButton" >Formular senden</button>
         </div>
@@ -52,6 +61,8 @@
         <br>
         <br>
         <br>
+        <!-- In diese Teil wird Begrüsung und Spiel aufgerufen. Manche Elemente werden min JS logik "gelöscht nach dem sie
+        ihre Zwechk erfüllt haben. Z.b: Begrüsung wird gelöscht nach dem Nutzer Spiel anfangt oder entscheidet die nicht zu spielen" -->
         <div id="infoText">
             <span id="begrusung"></span>
             <br>
@@ -86,21 +97,7 @@
                 <div id="nochEinMalButton"></div>
             </div>
             <div id="wiedersehen"></div>
-
-
-            
-
-
-            <!-- <input type="radio" id="geschlecht" name="geschlecht" value="Frau" checked="checked"/>
-            <label for="weiblich">weiblich</label>
-            <br>
-            <br>
-            <input type="radio" id="geschlecht" name="geschlecht" value="Herr" />
-            <label for="männlich">männlich</label>
-            <br>
-            <br> -->
-        
-
+        <!-- JS logik -->
         <script src="greeter.js"></script>        
-
+            <!-- Ende von Body -->
     </body>

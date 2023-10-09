@@ -17,23 +17,28 @@ let begrusung = document.getElementById('begrusung');
 let begrusung2 = document.getElementById('begrusung2'); 
 let infoText = document.getElementById('infoText');
 
-
+// Main Funktion
 function main(){
   
-  
+  // Logoík für "Formular senden" - button. On click wird die information die Nutzer eingegeben gespeichert, um die weiter zu benutzen
+  // in on click Funktion wird auch Logik für weitere Seite Rendering beschrieben
   inputButton.addEventListener("click", function(){
     let geschlecht = document.querySelector('input[name="geschlecht"]:checked');
     let vornameOutput = vorname.value;
     let nachnameOutput = nachname.value;
+    // Value von Geschlecht ist "Herr" oder "Frau". 
     let geschlechtOutput = geschlecht.value;
     let alterOutput = alter.value;
     
-    
+    // Hier pruft die Schleife Alter von Benutzer. Falls Benutzer altere als 40 ist wird eine höfliche Begrusung gezeigt mit Familien Name von Nutzer
+    // Auserdem wird ihm eingebotten ein Spiel zu spielen
     if (alterOutput >= 40 ){
       document.getElementById('begrusung').innerHTML = `Guten Tag, ${geschlechtOutput} ${nachnameOutput}`
       document.getElementById('begrusung2').innerHTML = `Wollen Sie ein Spiel spielen?`
     }
     
+    // Falls nicht wird Nutzer mit Name einfach genant. 
+    // Auserdem wird ihm eingebotten ein Spiel zu spielen
     else
     {
       document.getElementById('begrusung').innerHTML = `Hi, ${vornameOutput}`
@@ -49,20 +54,19 @@ function main(){
       if(radioJaNeinOutput == 'ja'){
         
         if (alterOutput >= 40 ){
-          document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
-          Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen,
-          ob mein Zahl größer oder kleiner. Möge der Macht mit ihnen sein.
-          Es geht los. Ich hab ein Zahl. Raten Sie welche:`
+          document.getElementById('ersteAntwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
+          Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen, ob mein Zahl größer oder kleiner.
+            Möge der Macht mit ihnen sein.`
+          document.getElementById('zweiteAntwort').innerHTML =`Es geht los. Ich hab ein Zahl. Raten Sie welche:`
           
         }
         
         else
         {
-          document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
-          Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen,
-          ob mein Zahl größer oder kleiner. Wenn alles klar, dann möge der Macht mit dir sein. 
-          Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
-          Es geht los. Ich hab ein Zahl. Rate welche:`
+          document.getElementById('ersteAntwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
+          Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen ob mein Zahl größer oder kleiner.
+          Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)`
+          document.getElementById('zweiteAntwort').innerHTML =`Es geht los. Ich hab ein Zahl. Rate welche:`
         }
         spiel();
       } 
@@ -137,10 +141,11 @@ function spiel() {
 document.getElementById('nochEinMalButton').addEventListener("click", function () {
 
   if (document.getElementById('radioJaNoch').checked) {
+    document.getElementById('infoText').innerHTML = ``;
     document.getElementById('outputSpiel').innerHTML = ``;
     document.getElementById('warnung').innerHTML = ``;
     document.getElementById('ergebnis').innerHTML = ``;
-    document.getElementById('nochEinSpiel').innerHTML = ``;
+    document.getElementById('nochEinSpiel').innerHTML = '';
     document.getElementById('radioNochEinMal').innerHTML = '';
     document.getElementById('nochEinMalButton').innerHTML = '';
     spiel();
@@ -152,139 +157,7 @@ document.getElementById('nochEinMalButton').addEventListener("click", function (
   }
 
 });
-// function spiel () {
-  
-  
-//   var randomZahl = Math.floor(Math.random() * 100);
-  
-//   spielZahl = randomZahl;
-  
-//   // let inputNochEinSpiel;
-  
-//   let versuche = 6;
-//   let gewonnen = false;
-//   document.getElementById('spielerZahl').innerHTML = '<label for="spielerZahl">Zahl:</label><input type="number" id="spielerZahlInput" name="spielerZahl" min ="1" max ="100" size="4" />';
-//   document.getElementById('spielerZahlInputButton').innerHTML = '<button name="spielerZahlButton" id="spielerZahlButton" >Bestetigen</button>'; 
-  
-//   for (i=0; i<versuche; i++) {
-//     spielerZahlInputButton.addEventListener("click", function(){
-//       zahl = spielerZahlInput.value;
-//       console.log(zahl);
-//       console.log(spielZahl);
-//     if (zahl == spielZahl){
-//       document.getElementById('ergebnis').innerHTML = `Glükwunsch! Mein zahl ist ${spielZahl}`;
-//       document.getElementById('nochEinSpiel').innerHTML = `Noch ein Spiel?`
-//       document.getElementById('radioNochEinMal').innerHTML = '<input type="radio" id="radioJa" name="radioNochEinMal" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioNochEinMal" value="Nein" /> <label for="nein">Nein</label>';
-//       document.getElementById('nochEinMalButton').innerHTML = '<button name="nochEinMalButton" id="nochEinMalButton" >Bestetigen</button>';
-//       // gewonnen = true;
-//       // break;
-//     }
-//     if (zahl < spielZahl){
-//       document.getElementById('outputSpiel').innerHTML = `Mein Zahl ist großer als ${zahl}`;
-//     }
-//     else {
-//       document.getElementById('outputSpiel').innerHTML = `Mein Zahl ist kleiner als ${zahl}`
-//     }
-//     if (i == 5){
-//       document.getElementById('warnung').innerHTML = `Pass auf! Es ist letztes Versuch`
-//     }
-//     if (i == 6 ){
-//       document.getElementById('ergebnis').innerHTML = `Keine Versuchen mehr. Mein Zahl war ${spielZahl}`
-//       document.getElementById('nochEinSpiel').innerHTML = `Noch ein Spiel?`
-//       document.getElementById('radioNochEinMal').innerHTML = '<input type="radio" id="radioJa" name="radioNochEinMal" value="Ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioNochEinMal" value="Nein" /> <label for="nein">Nein</label>';
-//       document.getElementById('nochEinMalButton').innerHTML = '<button name="nochEinMalButton" id="nochEinMalButton" >Bestetigen</button>';
-//       // break;
-//     }
-//   });
-// } 
 
-//   nochEinMalButton.addEventListener("click", function(){
-//     if(radioNochEinMal == 'ja'){
-//       spiel ();
-//       }
-//       else{
-//         document.getElementById('wiedersehen').innerHTML = `Auf Wiedersehen!`
-//       }
-//   });
-// }
-
-
-   
-        
-        
-        
-          // print("Noch ein Spiel? Ja/Nein:");
-          // inputNochEinSpiel = stdin.readLineSync();
-        
-          // if (inputNochEinSpiel.toLowerCase() == "ja") {
-          //   if (inputAlter >= 40) {
-          //     print("Es geht los. Ich hab eine Zahl. Raten Sie welche.");
-          //   } else {
-          //     print("Es geht los. Ich hab eine Zahl. Rate welche.");
-          //   }
-          //   spiel(inputGeschlecht, inputName, inputNachname, inputAlter);
-          // }
-          // if (inputNochEinSpiel.toLowerCase() == "nein") {
-          //   if (inputAlter >= 40) {
-          //     print("Ich hoffe, Sie hatten Spaß. Auf Wiedersehen!");
-          //   } else {
-          //     print("Ich hoffe, du hattst Spaß. Auf Wiedersehen!");
-          //   }
-          // }
-    
-
-    // ziet den eingegebene Alter, pruft ob in Feld mit Alter die zahl eingegeben wurde, falls nicht wird Fehler gemeldet
-    // "Schreiben Sie wie Alt sind Sie mit Zahlen"
-    // Nutzer wird verpflichtet Alter neu zu schreiben
-    // ziet eingegebene Geschlecht und vergleicht es mit ein Array von Geschlechts
-    // es werden zwei Array sein mit verschiedene Geschlechte weiblicheGeschlecht[] und männlicheGeschlecht[] 
-    // Fals Prufungs Schleife die durch zwei Array geht keine Zufall in Arreys findet wird ein Fehler gemeldet
-    // "Es sieht so aus, dass Sie sich vertippt haben. Sie können Ihre Geschlecht als Buchstabe m oder w schreiben. 
-    // Oder schreiben Sie ein ganzes Wort ohne Tippfehler"
-    // Wenn alles ok. Die Seite wird Neu gerendert
-    // Auf die seite wird Stehen 
-    //  Falls Person Junger als 40 schreibt
-    // "Hi, *User Vorname*!
-    // Du bist *User Alter*
-    // Willst du ein Spiel spielen"
-    // Falls Person älter als 40 und ein Mann ist. Schreibt:
-    // "Guten Tag, Herr *User Nachname*
-    // Sie siend *User Alter*
-    // Wollen Sie Ein Spiel spielen?"
-    // Falls Person älter als 40 und ein Frau ist. Schreibt:
-    // "Guten Tag, Frau *User Nachname*
-    // Sie sind *User Alter*
-    // Wollen Sie Ein Spiel spielen?"
-    // Feld mit Ja und Nein Bottoms.
-    // Falls Ja wird Seite neu geladen 
-    // die Regeln werden Erklärt
-    // Regel Erklärung für Person unter 40:
-    // "Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
-    // Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen ob mein Zahl größer oder kleiner.
-    // Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
-    // Es geht los. Ich hab ein Zahl. Rate welche"
-    // Regeln Erklärung für Person über oder gleich 40:
-    // "Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
-    // Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen, ob mein Zahl größer oder kleiner.
-    // Möge der Macht mit ihnen sein.
-    // Es geht los. Ich hab ein Zahl. Raten Sie welche"
-    // Und dann startet spiel()
-
-// Wie funktioniert Spiel Funktion:
-// Ein random Zahl ab 0 bis 100 wird "gewürfelt"
-// Nutzer gibt ein Zahl die Nutzerzahl wird mit Randomzahl wergleicht 
-// Falls Zahl größer ist wird "Mein Zahl ist größer" Fals kleiner "Mein Zahl ist kleiner"
-// Wenn nur ein Versuch übrig ist wird gesagt "Vorsichtig! Es ist ein letztes Versuch"
-// Falls Nutzer den Zahl richtig Erraten wird geschrieben "Glückwunsch! Mein Zahl war in der Tat $randomZahl"
-// Falls nicht "Schade... Mein zahl war $randomZahl"
-// Igal ob Nutzer gewint oder ferliert im wird eingebotten Noch ein Spiel zu spielen
-// "Noch ein spiel?"
-// Feld mit ja oder nein Bottoms
-// Falls Ja Spiel startet neu 
-// Falls nutzer nicht Erstes mal Spielen will, wird geschrieben "Ok :("
-// 44
-// 55
-// Falls Nutzer ein Spiel oder mehrere schpiele geschpielt
 
 
 

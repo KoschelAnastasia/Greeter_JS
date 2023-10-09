@@ -46,6 +46,9 @@
         <input type="number" id="alter" name="alter" min ="1" max ="200" size="4" />
         <br>
         <br>
+        <!-- Ein Button, die Formular sendet. button name="input" ist ein HTML-Button mit dem Namen "input", der in Formularen verwendet wird,
+         um Daten an den Server zu senden. Das "id= "inputButton""-Attribut wird verwendet, um diesem Button eine eindeutige Kennung zuzuweisen. Dies ermöglicht es,
+         den Button leicht mit JavaScript oder CSS anzusprechen und zu bearbeiten.-->
         <h2>Ist alles richtig? Dann senden Sie Formular.</h2>
         <button name="input" id="inputButton" class="inputButton">Formular senden</button>
         </div>
@@ -53,6 +56,8 @@
         <br>
         <br>
         <br>
+        <!-- In diese Teil wird Begrüsung und Spiel aufgerufen. Manche Elemente werden min JS logik "gelöscht nach dem sie
+        ihre Zwechk erfüllt haben. Z.b: Begrüsung wird gelöscht nach dem Nutzer Spiel anfangt oder entscheidet die nicht zu spielen" -->
         <div id="infoText">
             <span id="begrusung"></span>
             <br>
@@ -65,42 +70,29 @@
             <br>
             <br>
             <br>
-            <div id="antwort"></div>
-            <br>   
+        </div>
+        <div id="ersteAntwort"></div>
+        <div id="zweiteAntwort"></div>
             <br>   
             <br>
             <div id ="outputSpiel"></div>   
             <div id="warnung"></div>
-             <br>   
-             <br>   
-             <br>   
+            <br>   
             <div id="spielerZahl"></div>
+            <br>   
             <div id="spielerZahlInputButton"></div>
+            <br>   
+            <br>   
             <div id="ergebnis"></div>
-            <br>   
-            <br>   
             <br>
-            <div id="nochEinSpiel"></div>
-            <br>
-            <div id="radioNochEinMal"></div>
-            <div id="nochEinMalButton"></div>
+            <div id = "nochEinOption">
+                <div id="nochEinSpiel"></div>
+                <br>
+                <div id="radioNochEinMal"></div>
+                <div id="nochEinMalButton"></div>
+            </div>
             <div id="wiedersehen"></div>
-
-
-            
-
-
-            <!-- <input type="radio" id="geschlecht" name="geschlecht" value="Frau" checked="checked"/>
-            <label for="weiblich">weiblich</label>
-            <br>
-            <br>
-            <input type="radio" id="geschlecht" name="geschlecht" value="Herr" />
-            <label for="männlich">männlich</label>
-            <br>
-            <br> -->
-        
-        </div>
-
+        <!-- JS logik -->
         <script src="greeter.js"></script>        
-
+            <!-- Ende von Body -->
     </body>

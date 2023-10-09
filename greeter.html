@@ -12,14 +12,15 @@
         </style>
         
     </head>
-
+    
+    
     <body>
-        
+        <h1 id=" title">Greeter Projekt</h1>
         <!-- Uberschrift für Vorname Feld -->
-        <div id = "form">
-        <h1>Wie heißen Sie?</h1>
+        <div id = "form" >
+        <h2>Wie heißen Sie?</h2>
+        <label for="vorname" class="vorname">Vorname:</label>
         
-        <label for="vorname">Vorname:</label>
         <!-- Vorname Feld, hier schreibt Nutzer der Vorname; Type fon eingegebene Information sollte text sein; Information hat ein id mit "vormame" das ist die Kennung für die Feld;
         "name ="vormame"" - dies ist der Name von Vorname Feld, der beim Senden die Information an der Server gesendet wird; required - dieses Atribut gibt an,
         dass das Feld vor dem Absenden die Information ausgefüllt sein muss; minlength und maxlength ist maximale und minimale Länge des eingegebene Text; size ist die Große des Eingabefeldes in Zeichen -->
@@ -27,26 +28,26 @@
         <br>
         <br>
         <!-- Das gleiche für Nachname, Geschlecht und Alter -->
-        <label for="nachname">Nachname:</label>
+        <label for="nachname" class="nachname">Nachname:</label>
         <input type="text" id="nachname" name="nachname" minlength="3" maxlength="13" size="15" />
         <br>
         <br>   
-        <h1>Was ist ihre Geschlecht?</h1>
+        <h2>Was ist ihre Geschlecht?</h2>
         <input type="radio" id="geschlechtWeib" name="geschlecht" value="Frau" checked="checked"/>
-        <label for="weiblich">weiblich</label>
+        <label for="weiblich" class="geschlecht">weiblich</label>
         <br>
         <br>
         <input type="radio" id="geschlechtMann" name="geschlecht" value="Herr" />
-        <label for="männlich">männlich</label>
+        <label for="männlich" class="geschlecht">männlich</label>
         <br>
         <br>
-        <h1>Wie Alt sind Sie?</h1>
-        <label for="alter">Alter:</label>
+        <h2>Wie Alt sind Sie?</h2>
+        <label for="alter" id="alter" class="alter">Alter:</label>
         <input type="number" id="alter" name="alter" min ="1" max ="200" size="4" />
         <br>
         <br>
         <h2>Ist alles richtig? Dann senden Sie Formular.</h2>
-        <button name="input" id="inputButton" >Formular senden</button>
+        <button name="input" id="inputButton" class="inputButton">Formular senden</button>
         </div>
         <br>
         <br>

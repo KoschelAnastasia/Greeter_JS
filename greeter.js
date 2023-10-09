@@ -40,7 +40,7 @@ function main(){
       document.getElementById('begrusung2').innerHTML = `Wilst du ein Spiel spielen?`
     }
     
-    document.getElementById('radioJaNein').innerHTML = '<input type="radio" id="radioJa" name="radioJaNein" value="ja" checked="checked"/><label for="ja">Ja</label><input type="radio" id="radioNein" name="radioJaNein" value="nein" /> <label for="nein">Nein</label>';
+    document.getElementById('radioJaNein').innerHTML = '<input type="radio" id="radioJa" name="radioJaNein" value="ja" checked="checked"/><label for="ja" class = "ja">Ja</label><input type="radio" id="radioNein" name="radioJaNein" value="nein" /> <label for="nein" class ="nein">Nein</label>';
     document.getElementById('JaNeinInput').innerHTML = '<button name="buttonJaNein" id="buttonJaNein" >Bestetigen</button>';
     
     JaNeinInput.addEventListener('click', function (){
@@ -50,8 +50,8 @@ function main(){
         
         if (alterOutput >= 40 ){
           document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl und Sie sollen raten welche.
-          Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen, ob mein Zahl größer oder kleiner.
-          Möge der Macht mit ihnen sein.
+          Sie haben nur 6 fersuche um Zahl zu erraten. Nach jeden Ihre Versuch werde ich ihnen sagen,
+          ob mein Zahl größer oder kleiner. Möge der Macht mit ihnen sein.
           Es geht los. Ich hab ein Zahl. Raten Sie welche:`
           
         }
@@ -59,8 +59,9 @@ function main(){
         else
         {
           document.getElementById('antwort').innerHTML = `Die Regeln sind einfach. Ich würfle ein Zahl ab 0 bis 100 und du soll raten welche.
-          Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen ob mein Zahl größer oder kleiner.
-          Wenn alles klar, dann möge der Macht mit dir sein. Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
+          Du hast nur 6 Versuche um Zahl zu erraten. Nach jeden dein Versuch werde ich dir sagen,
+          ob mein Zahl größer oder kleiner. Wenn alles klar, dann möge der Macht mit dir sein. 
+          Wenn nicht, dann hast du Pech, niemand kann mir jetzt Stopen ;)
           Es geht los. Ich hab ein Zahl. Rate welche:`
         }
         spiel();
